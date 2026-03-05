@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookNest - Online Book Store</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/enhanced-style.css">
+    <style>
+        /* SVG Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .floating-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .book-collection {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .book-icon {
+            font-size: 4rem;
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .stat-box {
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .highlight-section {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.05) 0%, rgba(210, 105, 30, 0.05) 100%);
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: #8B4513;
+            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .cta-banner {
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .cta-banner h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-banner p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .divider {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #8B4513, #D2691E);
+            margin: 1.5rem auto;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>📚 BookNest</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="books.html">Books</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html" class="cart-link">🛒 Cart</a></li>
+                <li><a href="login.html" class="login-link">Login</a></li>
+            </ul>
+            <!-- Hamburger Menu for Mobile -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner with Graphics -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="book-collection">
+                <span class="book-icon floating-icon">📖</span>
+                <span class="book-icon floating-icon" style="animation-delay: 0.3s;">📚</span>
+                <span class="book-icon floating-icon" style="animation-delay: 0.6s;">✨</span>
+                <span class="book-icon floating-icon" style="animation-delay: 0.9s;">💡</span>
+            </div>
+            <h1 class="hero-title">Discover Your Next Favorite Book</h1>
+            <p class="hero-subtitle">Explore thousands of books at unbeatable prices with fast delivery</p>
+            <a href="books.html" class="hero-btn">🛍️ Start Shopping Now</a>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="highlight-section">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="text-align: center; color: #8B4513; margin-bottom: 2rem;">Why Choose BookNest?</h2>
+            <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center;">
+                <div class="stat-box">
+                    <div class="stat-number">50K+</div>
+                    <div class="stat-label">Books Available</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">100K+</div>
+                    <div class="stat-label">Happy Customers</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">24hrs</div>
+                    <div class="stat-label">Fast Delivery</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Bar -->
+    <section class="search-section">
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-bar" placeholder="Search for books, authors, genres...">
+            <button class="search-btn">🔍 Search</button>
+        </div>
+    </section>
+
+    <!-- Featured Books Section -->
+    <section class="featured-section">
+        <h2>⭐ Featured Books</h2>
+        <div class="divider"></div>
+        <div class="books-grid" id="featuredBooks">
+            <!-- Featured books will be loaded here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Best Sellers Section -->
+    <section class="bestsellers-section">
+        <h2>🏆 Best Sellers</h2>
+        <div class="divider"></div>
+        <div class="books-grid" id="bestsellers">
+            <!-- Best sellers will be loaded here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Categories Preview with Graphics -->
+    <section class="categories-preview">
+        <h2>📚 Browse Our Categories</h2>
+        <div class="divider"></div>
+        <div class="categories-grid">
+            <a href="categories.html?category=fiction" class="category-card">
+                <span class="category-icon">📖</span>
+                <h3>Fiction</h3>
+                <p>Stories & Novels</p>
+            </a>
+            <a href="categories.html?category=non-fiction" class="category-card">
+                <span class="category-icon">📚</span>
+                <h3>Non-Fiction</h3>
+                <p>Real Stories & Facts</p>
+            </a>
+            <a href="categories.html?category=educational" class="category-card">
+                <span class="category-icon">🎓</span>
+                <h3>Educational</h3>
+                <p>Learn & Grow</p>
+            </a>
+            <a href="categories.html?category=self-help" class="category-card">
+                <span class="category-icon">💡</span>
+                <h3>Self Help</h3>
+                <p>Personal Development</p>
+            </a>
+            <a href="categories.html?category=children" class="category-card">
+                <span class="category-icon">🧒</span>
+                <h3>Children Books</h3>
+                <p>Fun & Learning</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Highlight Section -->
+    <section class="feature-grid" style="max-width: 1200px; margin: 3rem auto; padding: 0 2rem;">
+        <div class="feature-card">
+            <span class="feature-icon">🚚</span>
+            <h3>Fast Shipping</h3>
+            <p>Get your books delivered within 24 hours across India</p>
+        </div>
+        <div class="feature-card">
+            <span class="feature-icon">💰</span>
+            <h3>Best Prices</h3>
+            <p>Unbeatable discounts and special offers every day</p>
+        </div>
+        <div class="feature-card">
+            <span class="feature-icon">⭐</span>
+            <h3>Quality Books</h3>
+            <p>Curated collection of authentic and original books</p>
+        </div>
+        <div class="feature-card">
+            <span class="feature-icon">🔒</span>
+            <h3>Secure Payment</h3>
+            <p>Safe and encrypted payment methods available</p>
+        </div>
+    </section>
+
+    <!-- Customer Reviews Section -->
+    <section class="reviews-section">
+        <h2>💬 What Our Customers Say</h2>
+        <div class="divider"></div>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"BookNest has the best collection! Fast delivery and great prices!"</p>
+                <p class="reviewer-name">- Priya M. ✓</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Amazing website design and excellent customer service!"</p>
+                <p class="reviewer-name">- Rahul K. ✓</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Found all the books I was looking for. Very satisfied!"</p>
+                <p class="reviewer-name">- Anjali D. ✓</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <h2>Ready to Explore Amazing Books?</h2>
+        <p>Join thousands of happy readers and start your reading journey today!</p>
+        <a href="books.html" class="hero-btn" style="background-color: white; color: #8B4513; font-weight: bold;">📚 Browse All Books</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About BookNest</h3>
+                <p>Your trusted online bookstore dedicated to promoting reading!</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="books.html">Shop Books</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>📞 9567356280</p>
+                <p>📧 info@booknest.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Founders</h3>
+                <p>Sejal Raynade</p>
+                <p>Aarya Shrivastav</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 BookNest. All rights reserved. | Designed with ❤️ by Sejal & Aarya</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

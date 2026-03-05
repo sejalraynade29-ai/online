@@ -1,0 +1,640 @@
+/* ==================== ENHANCED STYLES FOR BOOKNEST ==================== */
+
+/* ==================== ANIMATIONS ==================== */
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* ==================== FLOATING ICONS ==================== */
+
+.floating-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+.floating-icon:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.floating-icon:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.floating-icon:nth-child(4) {
+    animation-delay: 0.9s;
+}
+
+.pulse-icon {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* ==================== GRADIENT TEXT ==================== */
+
+.gradient-text {
+    background: linear-gradient(135deg, #8B4513, #D2691E);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.gradient-text-light {
+    background: linear-gradient(135deg, #FF6B6B, #FFB347);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ==================== BOOK COLLECTION ==================== */
+
+.book-collection {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.book-icon {
+    font-size: 4rem;
+    animation: float 4s ease-in-out infinite;
+    display: inline-block;
+}
+
+/* ==================== STATISTICS SECTION ==================== */
+
+.stat-box {
+    background: linear-gradient(135deg, #8B4513, #D2691E);
+    color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    flex: 1;
+    min-width: 150px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    animation: scaleIn 0.6s ease-out;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    animation: slideInUp 0.8s ease 0.2s both;
+}
+
+.stat-label {
+    font-size: 1rem;
+    opacity: 0.9;
+    animation: slideInUp 0.8s ease 0.4s both;
+}
+
+/* ==================== HIGHLIGHT SECTION ==================== */
+
+.highlight-section {
+    background: linear-gradient(135deg, rgba(139, 69, 19, 0.05) 0%, rgba(210, 105, 30, 0.05) 100%);
+    padding: 3rem 2rem;
+    border-radius: 15px;
+    margin: 2rem 0;
+    border: 2px solid rgba(139, 69, 19, 0.1);
+}
+
+.highlight-section h2 {
+    animation: slideInDown 0.8s ease;
+}
+
+/* ==================== FEATURE GRID ==================== */
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    animation: slideInUp 0.6s ease-out;
+}
+
+.feature-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.feature-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.feature-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.feature-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    border-color: #8B4513;
+    box-shadow: 0 8px 25px rgba(139, 69, 19, 0.2);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+    animation: float 3s ease-in-out infinite;
+}
+
+.feature-card h3 {
+    color: #8B4513;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* ==================== CTA BANNER ==================== */
+
+.cta-banner {
+    background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 15px;
+    text-align: center;
+    margin: 2rem 0;
+    box-shadow: 0 10px 30px rgba(139, 69, 19, 0.3);
+    animation: slideInUp 0.8s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 500px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: float 20s linear infinite;
+}
+
+.cta-banner h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+    animation: slideInDown 0.6s ease;
+}
+
+.cta-banner p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    position: relative;
+    z-index: 1;
+}
+
+/* ==================== DIVIDER ==================== */
+
+.divider {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #8B4513, #D2691E);
+    margin: 1.5rem auto;
+    border-radius: 2px;
+    animation: slideInUp 0.8s ease;
+}
+
+/* ==================== ENHANCED HERO SECTION ==================== */
+
+.hero {
+    background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 500px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    animation: float 15s linear infinite;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -30%;
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 50%;
+    animation: float 20s linear infinite reverse;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-title {
+    animation: slideInDown 0.8s ease;
+}
+
+.hero-subtitle {
+    animation: slideInUp 0.8s ease 0.2s both;
+}
+
+.hero-btn {
+    animation: slideInUp 0.8s ease 0.4s both;
+}
+
+/* ==================== ENHANCED SEARCH SECTION ==================== */
+
+.search-section {
+    background: linear-gradient(135deg, #f5f5f5 0%, #efefef 100%);
+}
+
+.search-container {
+    animation: slideInUp 0.8s ease;
+}
+
+.search-bar {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.search-bar:focus {
+    box-shadow: 0 6px 20px rgba(139, 69, 19, 0.2);
+    transform: scale(1.02);
+}
+
+.search-btn {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ==================== ENHANCED FEATURED & BESTSELLERS ==================== */
+
+.featured-section,
+.bestsellers-section {
+    animation: fadeIn 1s ease;
+}
+
+.featured-section h2,
+.bestsellers-section h2 {
+    animation: slideInDown 0.8s ease;
+}
+
+/* ==================== ENHANCED BOOKS GRID ==================== */
+
+.books-grid {
+    animation: fadeIn 0.8s ease;
+}
+
+.book-card {
+    transition: all 0.3s ease;
+    animation: slideInUp 0.6s ease-out;
+}
+
+.book-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.book-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.book-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.book-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.book-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(139, 69, 19, 0.2);
+}
+
+.book-image {
+    transition: all 0.3s ease;
+}
+
+.book-card:hover .book-image img {
+    transform: scale(1.05);
+}
+
+/* ==================== ENHANCED CATEGORIES ==================== */
+
+.categories-preview h2 {
+    animation: slideInDown 0.8s ease;
+}
+
+.categories-grid {
+    animation: fadeIn 0.8s ease;
+}
+
+.category-card {
+    transition: all 0.3s ease;
+    animation: slideInUp 0.6s ease-out;
+    border: 2px solid transparent;
+}
+
+.category-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.category-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.category-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.category-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.category-card:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    border-color: #8B4513;
+    box-shadow: 0 8px 20px rgba(139, 69, 19, 0.2);
+}
+
+.category-icon {
+    animation: float 3s ease-in-out infinite;
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+/* ==================== ENHANCED REVIEWS ==================== */
+
+.reviews-section h2 {
+    animation: slideInDown 0.8s ease;
+}
+
+.reviews-grid {
+    animation: fadeIn 0.8s ease;
+}
+
+.review-card {
+    transition: all 0.3s ease;
+    animation: slideInUp 0.6s ease-out;
+}
+
+.review-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.review-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.review-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(139, 69, 19, 0.15);
+}
+
+.stars {
+    animation: bounce 2s ease-in-out infinite;
+}
+
+/* ==================== ENHANCED FOOTER ==================== */
+
+.footer {
+    background: linear-gradient(135deg, #5a3a1a 0%, #8B4513 100%);
+}
+
+.footer-section h3 {
+    color: #FFB347;
+    margin-bottom: 1rem;
+    animation: slideInUp 0.6s ease;
+}
+
+.footer-section a {
+    transition: all 0.3s ease;
+    color: #f0f0f0;
+}
+
+.footer-section a:hover {
+    color: #FFB347;
+    transform: translateX(5px);
+}
+
+.footer-bottom {
+    border-top: 2px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(90deg, transparent, rgba(139, 69, 19, 0.2), transparent);
+}
+
+/* ==================== RESPONSIVE ENHANCEMENTS ==================== */
+
+@media (max-width: 768px) {
+    .book-collection {
+        gap: 1rem;
+    }
+
+    .book-icon {
+        font-size: 2.5rem;
+    }
+
+    .stat-box {
+        min-width: 120px;
+        padding: 1.5rem;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
+    }
+
+    .feature-card {
+        padding: 1.5rem;
+    }
+
+    .feature-icon {
+        font-size: 2.5rem;
+    }
+
+    .cta-banner h2 {
+        font-size: 1.8rem;
+    }
+
+    .cta-banner p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .book-collection {
+        gap: 0.5rem;
+    }
+
+    .book-icon {
+        font-size: 2rem;
+    }
+
+    .stat-box {
+        min-width: 100px;
+        padding: 1rem;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.8rem;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .feature-card {
+        padding: 1rem;
+    }
+
+    .feature-icon {
+        font-size: 2rem;
+    }
+
+    .cta-banner {
+        padding: 2rem 1rem;
+    }
+
+    .cta-banner h2 {
+        font-size: 1.5rem;
+    }
+
+    .cta-banner p {
+        font-size: 0.9rem;
+    }
+}
+
+/* ==================== UTILITY CLASSES ==================== */
+
+.enhanced-box-shadow {
+    box-shadow: 0 8px 25px rgba(139, 69, 19, 0.15);
+}
+
+.enhanced-gradient-bg {
+    background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+}
+
+.smooth-transition {
+    transition: all 0.3s ease;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #8B4513, #D2691E);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
