@@ -1,0 +1,505 @@
+// ==================== BOOKS DATABASE ====================
+
+const booksDatabase = [
+    {
+        id: 1,
+        title: "The Great Gatsby",
+        author: "F. Scott Fitzgerald",
+        price: 299,
+        originalPrice: 399,
+        category: "fiction",
+        image: "📚",
+        description: "A classic tale of love, wealth, and the American Dream set in the Jazz Age.",
+        pages: 180,
+        isbn: "978-0-7432-7356-5",
+        published: 2004
+    },
+    {
+        id: 2,
+        title: "Sapiens",
+        author: "Yuval Noah Harari",
+        price: 549,
+        originalPrice: 699,
+        category: "non-fiction",
+        image: "📖",
+        description: "A sweeping history of humankind from the Stone Age to modern times.",
+        pages: 528,
+        isbn: "978-0-06-231609-7",
+        published: 2014
+    },
+    {
+        id: 3,
+        title: "To Kill a Mockingbird",
+        author: "Harper Lee",
+        price: 249,
+        originalPrice: 349,
+        category: "fiction",
+        image: "📚",
+        description: "A gripping tale of racial injustice and childhood innocence in the American South.",
+        pages: 323,
+        isbn: "978-0-06-112008-4",
+        published: 1960
+    },
+    {
+        id: 4,
+        title: "The Power of Now",
+        author: "Eckhart Tolle",
+        price: 399,
+        originalPrice: 499,
+        category: "self-help",
+        image: "💡",
+        description: "Transform your life by living in the present moment.",
+        pages: 236,
+        isbn: "978-1-57731-152-2",
+        published: 1997
+    },
+    {
+        id: 5,
+        title: "Introduction to Python",
+        author: "Mark Lutz",
+        price: 699,
+        originalPrice: 899,
+        category: "educational",
+        image: "🎓",
+        description: "Learn Python programming from basics to advanced concepts.",
+        pages: 1568,
+        isbn: "978-1-491-95959-8",
+        published: 2013
+    },
+    {
+        id: 6,
+        title: "Charlotte's Web",
+        author: "E.B. White",
+        price: 199,
+        originalPrice: 299,
+        category: "children",
+        image: "🧒",
+        description: "A heartwarming story of friendship between a pig and a spider.",
+        pages: 184,
+        isbn: "978-0-06-440055-8",
+        published: 1952
+    },
+    {
+        id: 7,
+        title: "1984",
+        author: "George Orwell",
+        price: 349,
+        originalPrice: 449,
+        category: "fiction",
+        image: "📚",
+        description: "A dystopian novel about totalitarianism and surveillance.",
+        pages: 328,
+        isbn: "978-0-451-52493-2",
+        published: 1949
+    },
+    {
+        id: 8,
+        title: "Thinking, Fast and Slow",
+        author: "Daniel Kahneman",
+        price: 599,
+        originalPrice: 749,
+        category: "non-fiction",
+        image: "📖",
+        description: "Explore the two systems of thought that drive human decision-making.",
+        pages: 499,
+        isbn: "978-0-374-27563-1",
+        published: 2011
+    },
+    {
+        id: 9,
+        title: "Atomic Habits",
+        author: "James Clear",
+        price: 449,
+        originalPrice: 599,
+        category: "self-help",
+        image: "💡",
+        description: "Build better habits and break bad ones through small, consistent changes.",
+        pages: 320,
+        isbn: "978-0-735-21141-8",
+        published: 2018
+    },
+    {
+        id: 10,
+        title: "The Hobbit",
+        author: "J.R.R. Tolkien",
+        price: 379,
+        originalPrice: 499,
+        category: "fiction",
+        image: "📚",
+        description: "An epic fantasy adventure of a hobbit on a quest for treasure.",
+        pages: 310,
+        isbn: "978-0-547-92822-8",
+        published: 1937
+    }
+];
+
+// ==================== CART MANAGEMENT ====================
+
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+// Save cart to localStorage
+function saveCart() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+}
+
+// Add item to cart
+function addToCart(bookId = null, quantity = null) {
+    let book;
+    
+    if (bookId === null) {
+        // From book details page
+        const title = document.getElementById('bookTitle').textContent;
+        book = booksDatabase.find(b => b.title === title);
+        quantity = parseInt(document.getElementById('quantity').value);
+    } else {
+        // From book card
+        book = booksDatabase.find(b => b.id === bookId);
+        quantity = 1;
+    }
+
+    if (book) {
+        const existingItem = cart.find(item => item.id === book.id);
+        if (existingItem) {
+            existingItem.quantity += quantity;
+        } else {
+            cart.push({ ...book, quantity: quantity });
+        }
+        saveCart();
+        showNotification(`${book.title} added to cart!`);
+    }
+}
+
+// Remove item from cart
+function removeFromCart(bookId) {
+    cart = cart.filter(item => item.id !== bookId);
+    saveCart();
+    displayCart();
+}
+
+// Update cart item quantity
+function updateCartQuantity(bookId, quantity) {
+    const item = cart.find(item => item.id === bookId);
+    if (item) {
+        item.quantity = parseInt(quantity);
+        if (item.quantity <= 0) {
+            removeFromCart(bookId);
+        } else {
+            saveCart();
+            displayCart();
+        }
+    }
+}
+
+// Update cart count in navbar
+function updateCartCount() {
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const cartLink = document.querySelector('.cart-link');
+    if (cartLink) {
+        cartLink.textContent = `🛒 Cart (${totalItems})`;
+    }
+}
+
+// Show notification
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        background-color: #27AE60;
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 5px;
+        z-index: 2000;
+        animation: slideInRight 0.3s ease;
+    `;
+    document.body.appendChild(notification);
+    setTimeout(() => notification.remove(), 3000);
+}
+
+// ==================== DISPLAY BOOKS ====================
+
+function createBookCard(book) {
+    return `
+        <div class="book-card" onclick="viewBookDetails(${book.id})">
+            <div class="book-image">
+                <img src="${book.image}" alt="${book.title}">
+            </div>
+            <div class="book-content">
+                <h3 class="book-title">${book.title}</h3>
+                <p class="book-author">${book.author}</p>
+                <div class="book-price">
+                    ₹${book.price}
+                    <span class="original-price">₹${book.originalPrice}</span>
+                </div>
+                <button class="add-to-cart-btn" onclick="addToCart(${book.id}); event.stopPropagation();">Add to Cart</button>
+            </div>
+        </div>
+    `;
+}
+
+function displayBooks(books, containerId) {
+    const container = document.getElementById(containerId);
+    if (container) {
+        container.innerHTML = books.map(book => createBookCard(book)).join('');
+    }
+}
+
+function displayFeaturedBooks() {
+    const featured = booksDatabase.slice(0, 4);
+    displayBooks(featured, 'featuredBooks');
+}
+
+function displayBestSellers() {
+    const bestsellers = booksDatabase.slice(4, 8);
+    displayBooks(bestsellers, 'bestsellers');
+}
+
+function displayAllBooks() {
+    displayBooks(booksDatabase, 'booksGrid');
+}
+
+function displayCategoryBooks(category, containerId) {
+    const books = booksDatabase.filter(book => book.category === category);
+    displayBooks(books, containerId);
+}
+
+// ==================== FILTER BOOKS ====================
+
+function filterBooks() {
+    const searchTerm = document.getElementById('bookSearch').value.toLowerCase();
+    const category = document.getElementById('categoryFilter').value;
+    const priceRange = document.getElementById('priceFilter').value;
+
+    let filtered = booksDatabase.filter(book => {
+        const matchesSearch = book.title.toLowerCase().includes(searchTerm) ||
+                             book.author.toLowerCase().includes(searchTerm);
+        const matchesCategory = !category || book.category === category;
+        
+        let matchesPrice = true;
+        if (priceRange === '0-300') matchesPrice = book.price <= 300;
+        else if (priceRange === '300-600') matchesPrice = book.price > 300 && book.price <= 600;
+        else if (priceRange === '600+') matchesPrice = book.price > 600;
+
+        return matchesSearch && matchesCategory && matchesPrice;
+    });
+
+    displayBooks(filtered, 'booksGrid');
+}
+
+// ==================== CART PAGE ====================
+
+function displayCart() {
+    const container = document.getElementById('cartItemsContainer');
+    const emptyMessage = document.getElementById('emptyCartMessage');
+
+    if (cart.length === 0) {
+        if (container) container.innerHTML = '';
+        if (emptyMessage) emptyMessage.style.display = 'block';
+    } else {
+        if (emptyMessage) emptyMessage.style.display = 'none';
+        
+        if (container) {
+            container.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-image">${item.image}</div>
+                    <div class="cart-item-details">
+                        <p class="cart-item-title">${item.title}</p>
+                        <p class="cart-item-author">${item.author}</p>
+                        <p class="cart-item-price">₹${item.price}</p>
+                    </div>
+                    <div class="cart-item-controls">
+                        <input type="number" class="quantity-input" value="${item.quantity}" 
+                               onchange="updateCartQuantity(${item.id}, this.value)" min="1">
+                        <button class="remove-btn" onclick="removeFromCart(${item.id})">Remove</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+    }
+
+    updateCartSummary();
+}
+
+function updateCartSummary() {
+    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const shipping = cart.length > 0 ? 50 : 0;
+    const tax = subtotal * 0.05;
+    const total = subtotal + shipping + tax;
+
+    document.getElementById('subtotal').textContent = `₹${subtotal}`;
+    document.getElementById('shipping').textContent = `₹${shipping}`;
+    document.getElementById('tax').textContent = `₹${tax.toFixed(2)}`;
+    document.getElementById('total').textContent = `₹${total.toFixed(2)}`;
+}
+
+function proceedToCheckout() {
+    if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+    }
+    alert('Proceeding to checkout... (Feature under development)');
+}
+
+// ==================== BOOK DETAILS PAGE ====================
+
+function viewBookDetails(bookId) {
+    const book = booksDatabase.find(b => b.id === bookId);
+    if (book) {
+        localStorage.setItem('selectedBook', JSON.stringify(book));
+        window.location.href = 'book-details.html';
+    }
+}
+
+function displayBookDetails() {
+    const book = JSON.parse(localStorage.getItem('selectedBook'));
+    if (book) {
+        document.getElementById('bookTitle').textContent = book.title;
+        document.getElementById('bookAuthor').textContent = book.author;
+        document.getElementById('bookPrice').textContent = `₹${book.price}`;
+        document.getElementById('bookCategory').textContent = book.category.toUpperCase();
+        document.getElementById('bookISBN').textContent = book.isbn;
+        document.getElementById('bookPages').textContent = book.pages;
+        document.getElementById('bookPublished').textContent = book.published;
+        document.getElementById('bookDescription').textContent = book.description;
+
+        // Display related books
+        const related = booksDatabase.filter(b => 
+            b.category === book.category && b.id !== book.id
+        ).slice(0, 4);
+        displayBooks(related, 'relatedBooks');
+    }
+}
+
+// ==================== CATEGORIES PAGE ====================
+
+function displayCategories() {
+    displayCategoryBooks('fiction', 'fictionBooks');
+    displayCategoryBooks('non-fiction', 'nonFictionBooks');
+    displayCategoryBooks('educational', 'educationalBooks');
+    displayCategoryBooks('self-help', 'selfHelpBooks');
+    displayCategoryBooks('children', 'childrenBooks');
+}
+
+// ==================== AUTH HANDLERS ====================
+
+function toggleAuthForms() {
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+    
+    if (loginForm.style.display === 'none') {
+        loginForm.style.display = 'block';
+        signupForm.style.display = 'none';
+    } else {
+        loginForm.style.display = 'none';
+        signupForm.style.display = 'block';
+    }
+}
+
+function handleLogin(e) {
+    e.preventDefault();
+    const username = document.getElementById('loginUsername').value;
+    showNotification(`Welcome back, ${username}!`);
+    // Save user session
+    localStorage.setItem('user', username);
+    updateUserUI();
+    setTimeout(() => window.location.href = 'index.html', 2000);
+}
+
+function handleSignup(e) {
+    e.preventDefault();
+    const username = document.getElementById('signupUsername').value;
+    const password1 = document.getElementById('signupPassword').value;
+    const password2 = document.getElementById('signupConfirmPassword').value;
+
+    if (password1 !== password2) {
+        alert('Passwords do not match!');
+        return;
+    }
+
+    showNotification(`Account created successfully, ${username}!`);
+    localStorage.setItem('user', username);
+    updateUserUI();
+    setTimeout(() => window.location.href = 'index.html', 2000);
+}
+
+function updateUserUI() {
+    const user = localStorage.getItem('user');
+    const loginLink = document.querySelector('.login-link');
+    if (loginLink && user) {
+        loginLink.textContent = `👤 ${user}`;
+    }
+}
+
+// ==================== CONTACT FORM ====================
+
+function handleContactForm(e) {
+    e.preventDefault();
+    const name = document.getElementById('contactName').value;
+    const email = document.getElementById('contactEmail').value;
+    const message = document.getElementById('contactMessage').value;
+
+    console.log('Contact form submitted:', { name, email, message });
+    showNotification('Thank you! We will contact you soon.');
+    e.target.reset();
+}
+
+// ==================== HAMBURGER MENU ====================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (hamburger) {
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    }
+
+    // Initialize page based on URL
+    const page = window.location.pathname.split('/').pop() || 'index.html';
+    
+    if (page === 'index.html' || page === '') {
+        displayFeaturedBooks();
+        displayBestSellers();
+    } else if (page === 'books.html') {
+        displayAllBooks();
+        const searchInput = document.getElementById('bookSearch');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const priceFilter = document.getElementById('priceFilter');
+        
+        if (searchInput) searchInput.addEventListener('input', filterBooks);
+        if (categoryFilter) categoryFilter.addEventListener('change', filterBooks);
+        if (priceFilter) priceFilter.addEventListener('change', filterBooks);
+    } else if (page === 'categories.html') {
+        displayCategories();
+    } else if (page === 'cart.html') {
+        displayCart();
+    } else if (page === 'book-details.html') {
+        displayBookDetails();
+    }
+
+    // Update cart count and user UI on page load
+    updateCartCount();
+    updateUserUI();
+});
+
+// Add smooth scrolling for all anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});

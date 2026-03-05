@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details - BookNest</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>📚 BookNest</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="books.html">Books</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html" class="cart-link">🛒 Cart</a></li>
+                <li><a href="login.html" class="login-link">Login</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Book Details Section -->
+    <section class="book-details-section">
+        <div class="book-details-container">
+            <!-- Book Image -->
+            <div class="book-image">
+                <img id="bookImage" src="images/book-placeholder.jpg" alt="Book Cover">
+            </div>
+
+            <!-- Book Information -->
+            <div class="book-info">
+                <h1 id="bookTitle">Book Title</h1>
+                <p class="book-author">by <span id="bookAuthor">Author Name</span></p>
+                
+                <div class="book-rating">
+                    <span class="stars">⭐⭐⭐⭐⭐</span>
+                    <span class="rating-count">(245 reviews)</span>
+                </div>
+
+                <div class="book-price">
+                    <h2 id="bookPrice">₹599</h2>
+                    <p class="original-price">₹799</p>
+                    <span class="discount-badge">25% OFF</span>
+                </div>
+
+                <div class="book-meta">
+                    <p><strong>Category:</strong> <span id="bookCategory">Fiction</span></p>
+                    <p><strong>ISBN:</strong> <span id="bookISBN">978-0-123456-78-9</span></p>
+                    <p><strong>Pages:</strong> <span id="bookPages">320</span></p>
+                    <p><strong>Published:</strong> <span id="bookPublished">2024</span></p>
+                </div>
+
+                <div class="quantity-selector">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" min="1" value="1">
+                </div>
+
+                <button class="add-to-cart-btn" onclick="addToCart()">Add to Cart 🛒</button>
+            </div>
+        </div>
+
+        <!-- Book Description -->
+        <div class="book-description-section">
+            <h2>Description</h2>
+            <p id="bookDescription">
+                This is a detailed description of the book. It provides information about the plot, themes, and why readers should pick up this book.
+            </p>
+        </div>
+
+        <!-- Related Books Section -->
+        <div class="related-books-section">
+            <h2>Related Books</h2>
+            <div class="books-grid" id="relatedBooks">
+                <!-- Related books will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About BookNest</h3>
+                <p>Your trusted online bookstore dedicated to promoting reading and providing easy access to books for everyone.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="books.html">Shop Books</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>📞 9567356280</p>
+                <p>📧 info@booknest.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Founders</h3>
+                <p>Sejal Raynade</p>
+                <p>Aarya Shrivastav</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 BookNest. All rights reserved. | Designed with ❤️ by Sejal & Aarya</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

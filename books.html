@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books - BookNest</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>📚 BookNest</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="books.html" class="active">Books</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html" class="cart-link">🛒 Cart</a></li>
+                <li><a href="login.html" class="login-link">Login</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>All Books</h1>
+        <p>Explore our complete collection</p>
+    </section>
+
+    <!-- Filters and Search -->
+    <section class="filters-section">
+        <div class="filter-container">
+            <input type="text" id="bookSearch" class="search-bar" placeholder="Search books...">
+            <select id="categoryFilter" class="filter-select">
+                <option value="">All Categories</option>
+                <option value="fiction">Fiction</option>
+                <option value="non-fiction">Non-Fiction</option>
+                <option value="educational">Educational</option>
+                <option value="self-help">Self Help</option>
+                <option value="children">Children Books</option>
+            </select>
+            <select id="priceFilter" class="filter-select">
+                <option value="">All Prices</option>
+                <option value="0-300">₹0 - ₹300</option>
+                <option value="300-600">₹300 - ₹600</option>
+                <option value="600+">₹600+</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- Books Display -->
+    <section class="books-container">
+        <div class="books-grid" id="booksGrid">
+            <!-- Books will be loaded here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About BookNest</h3>
+                <p>Your trusted online bookstore dedicated to promoting reading and providing easy access to books for everyone.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="books.html">Shop Books</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>📞 9567356280</p>
+                <p>📧 info@booknest.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Founders</h3>
+                <p>Sejal Raynade</p>
+                <p>Aarya Shrivastav</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 BookNest. All rights reserved. | Designed with ❤️ by Sejal & Aarya</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
