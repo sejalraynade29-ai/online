@@ -3,147 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BookNest - Online Book Store</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Enhanced Online Experience</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            background: linear-gradient(90deg, #ff6b6b, #f06595);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3em;
+            margin-top: 20px;
+        }
+        .feature-card {
+            display: inline-block;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+        }
+        .feature-card:hover {
+            transform: scale(1.05);
+        }
+        .statistics {
+            text-align: center;
+            font-size: 1.5em;
+            margin: 40px 0;
+        }
+        .floating-icon {
+            position: absolute;
+            width: 50px;
+            transition: all 0.5s;
+        }
+        .icon-1 { top: 10%; left: 10%; }
+        .icon-2 { bottom: 10%; right: 10%; }
+        .icon-3 { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <h1>📚 BookNest</h1>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="books.html">Books</a></li>
-                <li><a href="categories.html">Categories</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="cart.html" class="cart-link">🛒 Cart</a></li>
-                <li><a href="login.html" class="login-link">Login</a></li>
-            </ul>
-            <!-- Hamburger Menu for Mobile -->
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Banner -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Discover Your Next Favorite Book</h1>
-            <p class="hero-subtitle">Explore thousands of books at unbeatable prices</p>
-            <a href="books.html" class="hero-btn">Shop Now</a>
-        </div>
-    </section>
-
-    <!-- Search Bar -->
-    <section class="search-section">
-        <div class="search-container">
-            <input type="text" id="searchInput" class="search-bar" placeholder="Search for books...">
-            <button class="search-btn">🔍 Search</button>
-        </div>
-    </section>
-
-    <!-- Featured Books Section -->
-    <section class="featured-section">
-        <h2>Featured Books</h2>
-        <div class="books-grid" id="featuredBooks">
-            <!-- Featured books will be loaded here by JavaScript -->
-        </div>
-    </section>
-
-    <!-- Best Sellers Section -->
-    <section class="bestsellers-section">
-        <h2>Best Sellers</h2>
-        <div class="books-grid" id="bestsellers">
-            <!-- Best sellers will be loaded here by JavaScript -->
-        </div>
-    </section>
-
-    <!-- Categories Preview -->
-    <section class="categories-preview">
-        <h2>Browse Categories</h2>
-        <div class="categories-grid">
-            <a href="categories.html?category=fiction" class="category-card">
-                <span class="category-icon">📖</span>
-                <h3>Fiction</h3>
-            </a>
-            <a href="categories.html?category=non-fiction" class="category-card">
-                <span class="category-icon">📚</span>
-                <h3>Non-Fiction</h3>
-            </a>
-            <a href="categories.html?category=educational" class="category-card">
-                <span class="category-icon">🎓</span>
-                <h3>Educational</h3>
-            </a>
-            <a href="categories.html?category=self-help" class="category-card">
-                <span class="category-icon">💡</span>
-                <h3>Self Help</h3>
-            </a>
-            <a href="categories.html?category=children" class="category-card">
-                <span class="category-icon">🧒</span>
-                <h3>Children Books</h3>
-            </a>
-        </div>
-    </section>
-
-    <!-- Customer Reviews Section -->
-    <section class="reviews-section">
-        <h2>Customer Reviews</h2>
-        <div class="reviews-grid">
-            <div class="review-card">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p>"BookNest has the best collection! Fast delivery and great prices!"</p>
-                <p class="reviewer-name">- Priya M.</p>
-            </div>
-            <div class="review-card">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p>"Amazing website design and excellent customer service. Highly recommended!"</p>
-                <p class="reviewer-name">- Rahul K.</p>
-            </div>
-            <div class="review-card">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p>"Found all the books I was looking for. Very satisfied with my purchase!"</p>
-                <p class="reviewer-name">- Anjali D.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>About BookNest</h3>
-                <p>Your trusted online bookstore dedicated to promoting reading and providing easy access to books for everyone.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="books.html">Shop Books</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>📞 9567356280</p>
-                <p>📧 info@booknest.com</p>
-            </div>
-            <div class="footer-section">
-                <h3>Founders</h3>
-                <p>Sejal Raynade</p>
-                <p>Aarya Shrivastav</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 BookNest. All rights reserved. | Designed with ❤️ by Sejal & Aarya</p>
-        </div>
-    </footer>
-
-    <script src="js/script.js"></script>
+    <h1>Welcome to Our Enhanced Online Experience</h1>
+    <div class="statistics">
+        <p>Users: 10,000+</p>
+        <p>Projects: 500+</p>
+        <p>Contributors: 200+</p>
+    </div>
+    <div class="feature-card">Feature 1</div>
+    <div class="feature-card">Feature 2</div>
+    <div class="feature-card">Feature 3</div>
+    <img src="book-icon.png" class="floating-icon icon-1">
+    <img src="book-icon.png" class="floating-icon icon-2">
+    <img src="book-icon.png" class="floating-icon icon-3">
 </body>
 </html>
